@@ -1,0 +1,79 @@
+<!-- As a link -->
+<nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>&#169; HAFC Bank Pvt.Ltd </b></a>
+    <span class="quote text-light">Giving you freedom...</span>
+  </nav>
+    
+  <div class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="text-center">Sign up</h3>
+                  
+              </div>
+              <div class="card-body">
+                  <!-- form tag nte ullil ngSubmit n ille event ne bind cheyyuka. eth function aano enter clk aakkiyaal 
+                    submit aavande aa function ne call cheyyuka. -->
+
+                  <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <!-- template reference n pakaram namma use aakkunne method aann ngModel.ith 2-way data flow 
+                            nadathunn. -->
+                        <input type="text" class="form-control" name="uname." formControlName="uname"  placeholder="username" id="uname" required>
+                    </div>
+
+                    <!-- validation kodukkunnath uname nte fld l- puthiya oru div create aakkki invalid uname n kodukkuka.-->
+                    <!-- touched:-fld touch or value change aayittindo nokkal,  dirty:- ingane value change aayittindenkil ille properties aann ,  error:- correct allel error kaanikkum. -->
+                    <div style="color: red;" *ngIf="(this.registerForm.get('uname')?.touched||this.registerForm.get('uname')?.dirty)&&this.registerForm.get('uname')?.errors">
+                        invalid username
+                    </div>
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <!-- template reference n pakaram namma use aakkunne method aann ngModel.ith 2-way data flow 
+                            nadathunn. -->
+                          <input type="text" class="form-control" name="acno" formControlName="acno"  placeholder="account number" id="acno" required>
+                      </div>
+
+                      <div style="color: red;" *ngIf="(this.registerForm.get('acno')?.touched||this.registerForm.get('acno')?.dirty)&&this.registerForm.get('acno')?.errors">
+                        invalid account number
+                    </div>
+
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <!-- ngModel vechitt cheyyunne 2 way binding-first method. ith work aavanamenkil athil 
+                            name="oru name kodukkanm" -->
+                          <input type="password" class="form-control" name="pswd" formControlName="pswd" placeholder="password" id="pswd" required>
+                      </div>
+
+                        <!-- formControlName eth peraanno aa peraann ngIf l kodukkandath -->
+                      <div style="color: red;" *ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&&this.registerForm.get('pswd')?.errors">
+                        invalid password
+                    </div>
+
+                      
+                      <div class="form-group">
+                          <!-- ivide paranthesis l koduthath event name aann.click aavumbo ath register() n ille function 
+                            e call aaakum -->
+
+
+                            <!-- ivide (click)="register()" function indaavum athine ivide aavashyulla so ath delete 
+                                aakkum ennitt ee button nte type "submit" aakki set aakkum.  -->
+                          <input type="submit" value="Register"  class="btn float-right login_btn " style="width:50%" >
+
+                      </div>
+                  </form>
+              </div>
+              <p style="color:white;align-items:baseline;">already exist? <a routerLink="">log in</a></p>
+          </div>
+      </div>
+  </div>
+

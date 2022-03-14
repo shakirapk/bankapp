@@ -1,0 +1,76 @@
+<!-- As a link -->
+<nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>&#169; HAFC Bank Pvt.Ltd </b></a>
+    <span class="quote text-light">Giving you freedom...</span>
+  </nav>
+  
+  <!-- string manipulation aim="your perfect banking partner" nn login.component.ts file l koduthitt ind athaann ide h1 tagl rand curly brazes nte ullil koduthe. -->
+  <h1 style="color: white;">{{aim}}</h1>
+  
+  <div class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="text-center">Sign In</h3>
+                  
+              </div>
+              <div class="card-body">
+                  <!-- just enter clk aakiyaal thanne login work aavum,button type submit aakkanm,aa btn l perform
+                     cheyyunna event delete cheyyanm. -->
+                  <form [formGroup]="loginForm" (ngSubmit)="login()">
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <!-- ivide property binding aann [] nte ullil koduthe.frst login.component.ts pg l accno="account no please" koduthin athinte aacno aann ivide placeholder square l koduthe. -->
+
+                          <!-- <input type="text" class="form-control"(change)="acnoChange($event)" [placeholder]="accno" id="login_accno" required> -->
+
+                          <!-- # varunnathinte meaning n vechaal ath template referencing variable aann.change() ille method ne ith vech replace cheyam. -->
+                          <!-- <input type="text" class="form-control" #acno [placeholder]="accno" id="login_accno" required> -->
+
+                          <!-- template reference n pakaram namma use aakkunne method aann ngModel.ith 2-way data flow nadathunn. -->
+                          <input type="text" class="form-control" name="account no." formControlName="acno"  [placeholder]="accno" id="login_accno" required>
+
+                      </div>
+
+                      <div style="color: red;" *ngIf="(this.loginForm.get('acno')?.touched||this.loginForm.get('acno')?.dirty)&&this.loginForm.get('acno')?.errors">
+                        invalid account number
+                    </div>
+
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <!-- <input type="password" class="form-control" (change)="pswdChange($event)" placeholder="password" id="login_password" required> -->
+                            
+                          <!-- template referencing variable vech change aakkiye -->
+                          <!-- <input type="password" class="form-control" #pswd placeholder="password" id="login_password" required> -->
+
+                          <!-- ngModel vechitt cheyyunne 2 way binding-first method. ith work aavanamenkil athil name="oru name kodukkanm" -->
+                          <input type="password" class="form-control" name="password" formControlName="pswd" placeholder="password" id="login_password" required>
+
+                      </div>
+                      
+                      <div style="color: red;" *ngIf="(this.loginForm.get('pswd')?.touched||this.loginForm.get('pswd')?.dirty)&&this.loginForm.get('pswd')?.errors">
+                        invalid password
+                    </div>
+
+
+                      <div class="form-group">
+                          <!-- ivide paranthesis l koduthath event name aann.click aavumbo ath login() n ille function e call aaakum -->
+
+                          <input type="submit" value="Login"  class="btn float-right login_btn " style="width:50%" >
+
+                          <!--eth function lanno nammakkk ee variables ne use aakkande aa function nte argument aakkitt kodukkuka.template referencing nte case le argument kodukkanduu  -->
+                          <!-- <input type="submit" value="Login" (click)="login(acno,pswd)" class="btn float-right login_btn " style="width:50%" >  -->
+
+                      </div>
+                  </form>
+              </div>
+              <!-- login l register n ille link clk aakiyaal register pg lekk povum.athinann routerLink kodukkunne <a> tag l.href um use aakkam. -->
+              <p style="color:white;align-items:baseline;">Not a user? <a routerLink="register">Register</a></p>
+          </div>
+      </div>
+  </div>

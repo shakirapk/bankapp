@@ -1,0 +1,8 @@
+<!-- child  -->
+<!-- button clk aakkiyaal maatram delete my account pg varuu -->
+<div *ngIf="item" class="d1">
+    <h6 style="color: white;"> Are you Sure do you Want to Delete this Account {{item}} ?</h6>
+        <button (click)="delete()"  class="btn btn-danger">Yes</button>
+        <!-- btn no clk aakkiyaal aa pg visible aavaathe nikkaan vendii. -->
+        <button (click)="cancel()"  class="btn btn-success">No</button>    
+</div>

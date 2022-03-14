@@ -1,0 +1,30 @@
+<!-- As a link -->
+<nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>&#169; HAFC Bank Pvt.Ltd </b></a>
+    <span class="quote text-light">Giving you freedom...</span>
+  </nav>
+
+  <!-- table create aakkanm -->
+<div class="container">
+    <div>
+    <table class="table" style="color: white; margin-top: 50px; ">
+    <thead>
+      <tr>
+        <th scope="col">Amount</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- eth array l aano datas store cheythe aa arrayname edukkanam,ivide "transactions" lann transaction.component.ts l store cheythath -->
+      <tr *ngFor="let t of transactions"> 
+        <!-- t namma koduthe name athe pole amount athinte key koduthath -->
+        <td>{{ t.amount}}</td>  
+        <td>{{ t.type}}</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  <a routerLink="/bank-home" style="margin-left: 500px;">Home</a>
+
+</div> 
+</div> 

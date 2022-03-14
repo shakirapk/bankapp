@@ -1,0 +1,8 @@
+    <!-- div l condition ne base cheyth state apply aakkanam -->
+<div [@openClose]="isOpen ? 'open' : 'close'">
+    <p style="color: white;">Div {{isOpen ? 'open' : 'close'}} </p>
+    <!-- div increase and decrease aakkunne animation aann cheyyunne. animation apply aavunnath btn clk aakkumbo aann.
+        orikke clk aakkiyaal athinte div increase aavum adutha clk l decrease aavum.so ivide negation aann work aavunnath
+        (onninte opposite matteth). so aa btn ne oru event vech bind cheyyuka. -->
+    <button (click)="toggle()">Toggle</button>
+</div>

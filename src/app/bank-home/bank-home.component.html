@@ -1,0 +1,155 @@
+<!-- As a link -->
+<nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>&#169; HAFC Bank Pvt.Ltd </b></a>
+    <span class="quote text-light">Giving you freedom...</span>
+  </nav>
+
+  <!-- user welcome msg,athayath login clk aakkiyaadum aa acnt holder name kaanikkuka. --> <!-- log out button-->
+  <h1 style="color: white;">Welcome {{user}}   <button (click)="logout()" style="float: right; margin-top: 10px;margin-right: 10px;" class="btn btn-warning">Log out</button>
+  </h1>
+
+  <!-- date and time display cheyyaan vendii -->
+
+<p style="color: white;">Login Details :- {{lDate | date:'short'}}</p>  <!-- date ne 12/12/2000   11:09 PM ee format lekk aakki-->
+
+  <!-- transaction history -->
+  <!-- ingane slash frst koduthaal ee link l clk aakkiyaal direct aayitt transaction pg lekkk povum control. -->
+  <a routerLink="/transaction">Transaction History</a>
+
+  <!-- delete my account -->
+  <button (click)="deleteAccount()" style=" float: right; margin-right: 10px; margin-top: 10px;" class="btn btn-danger" >Delete my Account</button>
+<!-- deleteconfirm nte selector edeyaanno visible aavande aa pg nte html pg l tag aayitt kodukkuka. -->
+<!-- child property binding -->
+<!-- onCancel - oru event aann. [item] - property binding aann -->
+<app-deleteconfirm (onDelete)="delete($event)"  (onCancel)="cancel()" [item]="acntno"></app-deleteconfirm>
+
+<hr>
+
+<!-- animation demo -->
+<app-animationdemo></app-animationdemo>
+
+
+  <!-- deposit  -->
+
+  <!-- [ngClass] koduthath ee certain class n style,html tag l kodukkaan aavum.athaayath delete account btn clk aakkumbo 
+    deposit & withdraw pg hiide aakkanam athin style { opacity:0 koduthe} -->
+
+  <div [ngClass]="acntno ? 'style1' : '' " class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <!-- highlight selector - appHighlight  -->
+                  <h3 appHighlight class="text-center">Deposit Form</h3>
+                  
+              </div>
+              <div class="card-body">
+                  <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="acno" formControlName="acno"  placeholder="account number" id="acno" required>
+                      </div>
+
+                      <div style="color: red;" *ngIf="(this.depositForm.get('acno')?.touched||this.depositForm.get('acno')?.dirty)&&this.depositForm.get('acno')?.errors">
+                        invalid account number
+                    </div>
+
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <input type="password" class="form-control" name="pswd" formControlName="pswd" placeholder="password" id="pswd" required>
+
+                      </div>
+
+                      <div style="color: red;" *ngIf="(this.depositForm.get('pswd')?.touched||this.depositForm.get('pswd')?.dirty)&&this.depositForm.get('pswd')?.errors">
+                        invalid password
+                    </div>
+
+
+                      <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="amount" formControlName="amount"  placeholder="amount" id="amt" required>
+                    </div>
+
+                    <div style="color: red;" *ngIf="(this.depositForm.get('amount')?.touched||this.depositForm.get('amount')?.dirty)&&this.depositForm.get('amount')?.errors">
+                        invalid amount
+                    </div>
+
+                      
+                      <div class="form-group">
+                          <input type="submit" value="Deposit"  class="btn float-right login_btn " style="width:50%" >
+
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- withdraw -->
+  
+  <div [ngClass]="acntno? 'style1' : '' " class="container col-md-12 mt-0">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <!-- highlight selector - appHighlight  -->
+                <h3 appHighlight class="text-center">Withdraw Form</h3>
+                
+            </div>
+            <div class="card-body">
+                <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="acno" formControlName="acno1"  placeholder="account number" id="acno1" required>
+                    </div>
+
+                    <div style="color: red;" *ngIf="(this.withdrawForm.get('acno1')?.touched||this.withdrawForm.get('acno1')?.dirty)&&this.withdrawForm.get('acno1')?.errors">
+                        invalid account number
+                    </div>
+
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="pswd" formControlName="pswd1" placeholder="password" id="pswd1" required>
+
+                    </div>
+
+                    <div style="color: red;" *ngIf="(this.withdrawForm.get('pswd1')?.touched||this.withdrawForm.get('pswd1')?.dirty)&&this.withdrawForm.get('pswd1')?.errors">
+                        invalid password
+                    </div>
+
+
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" name="amount" formControlName="amount1"  placeholder="amount" id="amt1" required>
+                  </div>
+
+                  <div style="color: red;" *ngIf="(this.withdrawForm.get('amount1')?.touched||this.withdrawForm.get('amount1')?.dirty)&&this.withdrawForm.get('amount1')?.errors">
+                    invalid amount
+                </div>
+
+                    
+                    <div class="form-group">
+                        <input type="submit" value="withdraw"  class="btn float-right login_btn " style="width:50%" >
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
